@@ -68,13 +68,13 @@ spec:
                   # the interface
                   #- ip: 1111:2222:3333:4444::aaaa:1
                   #  prefix-length: 64
-            dns-resolver:
-              config:
-                search:
-                - example.com
-                server:
-                - 192.168.100.1
-            #routes:
+            # dns-resolver:
+            #   config:
+            #     search:
+            #     - example.com
+            #     server:
+            #     - 192.168.100.1
+            # #routes:
             #  config:
             #  - destination: 0.0.0.0/0
             #    next-hop-interface: ens192

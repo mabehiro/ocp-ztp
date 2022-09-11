@@ -4,7 +4,8 @@ kind: PolicyGenTemplate
 metadata:
   # The name will be used to generate the placementBinding and placementRule names as {name}-placementBinding and {name}-placementRule
   name: "group-du-sno"
-  namespace: "ztp-group-v4.10"
+  #namespace: "ztp-group-v4.10"
+  namespace: "ztp-group"
 spec:
   bindingRules:
     # These policies will correspond to all clusters with this label:

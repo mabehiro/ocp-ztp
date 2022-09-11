@@ -3,7 +3,8 @@ apiVersion: ran.openshift.io/v1
 kind: PolicyGenTemplate
 metadata:
   name: "example-sno"
-  namespace: "ztp-site-v4.10"
+  #namespace: "ztp-site-v4.10"
+  namespace: "ztp-site"
 spec:
   bindingRules:
     # These policies will correspond to all clusters with this label:

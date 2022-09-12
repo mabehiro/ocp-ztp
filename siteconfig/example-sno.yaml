@@ -60,6 +60,9 @@ spec:
                 macAddress: "00:0c:29:53:54:e8"
                 ipv4:
                   enabled: true
+                  address:
+                  - ip: 192.168.100.20
+                    prefix-length: 24
                 ipv6:
                   enabled: false
                   #address:
@@ -68,15 +71,15 @@ spec:
                   # the interface
                   #- ip: 1111:2222:3333:4444::aaaa:1
                   #  prefix-length: 64
-            # dns-resolver:
-            #   config:
-            #     search:
-            #     - example.com
-            #     server:
-            #     - 192.168.100.1
-            # #routes:
-            #  config:
-            #  - destination: 0.0.0.0/0
-            #    next-hop-interface: ens192
-            #    next-hop-address: 192.168.100.1
-            #    table-id: 254
+            dns-resolver:
+              config:
+                search:
+                - example.com
+                server:
+                - 192.168.100.1
+            routes:
+              config:
+              - destination: 0.0.0.0/0
+                next-hop-interface: ens192
+                next-hop-address: 192.168.100.1
+                table-id: 254

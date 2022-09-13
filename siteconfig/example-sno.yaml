@@ -40,10 +40,10 @@ spec:
     nodes:
       - hostName: "sno.example.com"
         role: "master"
-        bmcAddress: "redfish-virtualmedia+http://192.168.100.16:8000/redfish/v1/Systems/564d5f67-8091-ec80-2f50-06e8b55354e8"
+        bmcAddress: "redfish-virtualmedia+http://192.168.100.16:8000/redfish/v1/Systems/dd647f86-2a28-479f-a4e0-fdaa5851e6dc"
         bmcCredentialsName:
           name: "sno-bmc-secret"
-        bootMACAddress: "00:0c:29:53:54:e8"
+        bootMACAddress: "52:54:00:f0:96:59"
         bootMode: "UEFI"
         # rootDeviceHints:
         #   deviceName: "/dev/sda"

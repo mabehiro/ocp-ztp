@@ -38,12 +38,12 @@ spec:
     #crTemplates:
     #  KlusterletAddonConfig: "KlusterletAddonConfigOverride.yaml"
     nodes:
-      - hostName: "example-node1.example.com"
+      - hostName: "sno.example.com"
         role: "master"
-        bmcAddress: "idrac-virtualmedia+http://192.168.100.16:8000/redfish/v1/Systems/564d5f67-8091-ec80-2f50-06e8b55354e8"
+        bmcAddress: "idrac-virtualmedia+http://192.168.100.18:8000/redfish/v1/Systems/19475723-ea49-4ee8-93b9-cf2ab57d1b06"
         bmcCredentialsName:
           name: "sno-bmc-secret"
-        bootMACAddress: "00:0c:29:53:54:e8"
+        bootMACAddress: "02:04:00:00:00:66"
         bootMode: "UEFI"
         #rootDeviceHints:
         #  hctl: '0:1:0'
@@ -51,17 +51,17 @@ spec:
         nodeNetwork:
           interfaces:
             - name: 
-              macAddress: "00:0c:29:53:54:e8"
+              macAddress: "02:04:00:00:00:66"
           config:
             interfaces:
               - name: ens192
                 type: ethernet
                 state: up
-                macAddress: "00:0c:29:53:54:e8"
+                macAddress: "02:04:00:00:00:66"
                 ipv4:
                   enabled: true
                   address:
-                  - ip: 192.168.100.20
+                  - ip: 192.168.123.5
                     prefix-length: 24
                 ipv6:
                   enabled: false
@@ -76,10 +76,10 @@ spec:
                 search:
                 - example.com
                 server:
-                - 192.168.100.1
+                - 192.168.123.1
             routes:
               config:
               - destination: 0.0.0.0/0
                 next-hop-interface: ens192
-                next-hop-address: 192.168.100.1
+                next-hop-address: 192.168.123.1
                 table-id: 254

@@ -45,6 +45,9 @@ spec:
           name: "sno-bmc-secret"
         bootMACAddress: "00:0c:29:53:54:e8"
         bootMode: "UEFI"
+        # rootDeviceHints:
+        #   deviceName: "/dev/sda"
+
         #rootDeviceHints:
         #  hctl: '0:1:0'
         #cpuset: "0-1,52-53"

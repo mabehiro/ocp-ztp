@@ -40,7 +40,7 @@ spec:
     nodes:
       - hostName: "sno.example.com"
         role: "master"
-        bmcAddress: "idrac-virtualmedia+http://192.168.100.18:8000/redfish/v1/Systems/3a1d8da2-c32e-448d-a432-1c687612f0c0"
+        bmcAddress: "redfish-virtualmedia+http://192.168.100.18:8000/redfish/v1/Systems/3a1d8da2-c32e-448d-a432-1c687612f0c0"
         bmcCredentialsName:
           name: "sno-bmc-secret"
         bootMACAddress: "02:04:00:00:00:66"

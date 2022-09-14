@@ -38,7 +38,7 @@ spec:
     #crTemplates:
     #  KlusterletAddonConfig: "KlusterletAddonConfigOverride.yaml"
     nodes:
-      - hostName: "sno.example.com"
+      - hostName: "sno"
         role: "master"
         bmcAddress: "redfish-virtualmedia+http://192.168.86.30:8000/redfish/v1/Systems/a50501ed-2b8e-4f94-ba5f-f6af4118e2ec"
         bmcCredentialsName:

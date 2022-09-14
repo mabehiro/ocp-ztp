@@ -29,7 +29,7 @@ spec:
       - cidr: 10.128.0.0/14
         hostPrefix: 23
     machineNetwork:
-      - cidr: 192.168.100.0/24
+      - cidr: 192.168.86.0/24
     serviceNetwork:
       - 172.30.0.0/16
     #additionalNTPSources:
@@ -40,10 +40,10 @@ spec:
     nodes:
       - hostName: "sno.example.com"
         role: "master"
-        bmcAddress: "redfish-virtualmedia+http://192.168.100.18:8000/redfish/v1/Systems/dd647f86-2a28-479f-a4e0-fdaa5851e6dc"
+        bmcAddress: "redfish-virtualmedia+http://192.168.86.30:8000/redfish/v1/Systems/aaf21441-25b0-461b-9cd3-8f432eedc3c5"
         bmcCredentialsName:
           name: "sno-bmc-secret"
-        bootMACAddress: "52:54:00:f0:96:59"
+        bootMACAddress: "52:54:00:0c:ea:9c"
         bootMode: "UEFI"
         # rootDeviceHints:
         #   deviceName: "/dev/sda"

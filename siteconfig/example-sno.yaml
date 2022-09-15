@@ -40,7 +40,7 @@ spec:
     #crTemplates:
     #  KlusterletAddonConfig: "KlusterletAddonConfigOverride.yaml"
     nodes:
-      - hostName: "sno"
+      - hostName: "sno.cowboy.com"
         role: "master"
         bmcAddress: "redfish-virtualmedia+http://192.168.86.30:8000/redfish/v1/Systems/608a799e-c9c9-4f72-b9dd-f311699f62fd"
         bmcCredentialsName:
@@ -75,15 +75,15 @@ spec:
         #           # the interface
         #           #- ip: 1111:2222:3333:4444::aaaa:1
         #           #  prefix-length: 64
-              dns-resolver:
-                config:
-                  search:
-                  - cowboy.com
-                  server:
-                  - 192.168.86.53
-              routes:
-                config:
-                - destination: 0.0.0.0/0
-                  next-hop-interface: ens1s0
-                  next-hop-address: 192.168.86.1
-                  table-id: 254
+            dns-resolver:
+               config:
+                 search:
+                 - cowboy.com
+                 server:
+                 - 192.168.86.53
+            routes:
+              config:
+              - destination: 0.0.0.0/0
+                next-hop-interface: ens1s0
+                next-hop-address: 192.168.86.1
+                table-id: 254

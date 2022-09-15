@@ -42,7 +42,7 @@ spec:
     nodes:
       - hostName: "sno.cowboy.com"
         role: "master"
-        bmcAddress: "redfish-virtualmedia+http://192.168.86.30:8000/redfish/v1/Systems/608a799e-c9c9-4f72-b9dd-f311699f62fd"
+        bmcAddress: "redfish-virtualmedia+http://192.168.86.30:8000/redfish/v1/Systems/32c6eeec-c425-43e8-9435-056afeed0391"
         bmcCredentialsName:
           name: "sno-bmc-secret"
         bootMACAddress: "52:54:00:3c:9a:e4"

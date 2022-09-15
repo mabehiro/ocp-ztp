@@ -41,7 +41,6 @@ spec:
       - hostName: "sno"
         role: "master"
         bmcAddress: "redfish-virtualmedia+http://192.168.86.30:8000/redfish/v1/Systems/9c90293c-9fcb-468d-812f-721256803e35"
-        #bmcAddress: "redfish-virtualmedia://ocpworkers.arndt.pw:8000/redfish/v1/Systems/dba7387f-627d-4e98-8b5f-aa5d67f36cfc"
         bmcCredentialsName:
           name: "sno-bmc-secret"
         bootMACAddress: "52:54:00:22:f0:07"

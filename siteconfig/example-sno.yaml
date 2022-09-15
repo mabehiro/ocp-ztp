@@ -46,24 +46,24 @@ spec:
         bmcCredentialsName:
           name: "sno-bmc-secret"
         bootMACAddress: "52:54:00:45:ca:3e"
-        bootMode: "UEFI"
+        # bootMode: "UEFI"
         rootDeviceHints:
           deviceName: "/dev/vda"
         #rootDeviceHints:
         #  hctl: '0:1:0'
         #cpuset: "0-1,52-53"
-        # nodeNetwork:
-        #   interfaces:
-        #     - name: 
-        #       macAddress: "02:04:00:00:00:66"
-        #   config:
-        #     interfaces:
-        #       - name: ens192
-        #         type: ethernet
-        #         state: up
-        #         macAddress: "02:04:00:00:00:66"
-        #         ipv4:
-        #           enabled: true
+        nodeNetwork:
+          interfaces:
+            - name: 
+              macAddress: "52:54:00:45:ca:3e"
+          config:
+            interfaces:
+              - name: ens1s0
+                type: ethernet
+                state: up
+                macAddress: "52:54:00:45:ca:3e"
+                ipv4:
+                  enabled: true
         #           address:
         #           - ip: 192.168.123.5
         #             prefix-length: 24

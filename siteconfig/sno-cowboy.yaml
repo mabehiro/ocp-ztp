@@ -45,20 +45,20 @@ spec:
         bmcAddress: "redfish-virtualmedia+http://192.168.86.30:8000/redfish/v1/Systems/608a799e-c9c9-4f72-b9dd-f311699f62fd"
         bmcCredentialsName:
           name: "sno-bmc-secret"
-        bootMACAddress: "00:00:00:00:ca:3e"
+        bootMACAddress: "52:54:00:3c:9a:e4"
         bootMode: "UEFI"
         rootDeviceHints:
           deviceName: "/dev/vda"
         nodeNetwork:
           interfaces:
             - name: 
-              macAddress: "00:00:00:00:ca:3e"
+              macAddress: "52:54:00:3c:9a:e4"
           config:
             interfaces:
               - name: ens1s0
                 type: ethernet
                 state: up
-                macAddress: "00:00:00:00:ca:3e"
+                macAddress: "52:54:00:3c:9a:e4"
                 ipv4:
                   enabled: true
                   address:

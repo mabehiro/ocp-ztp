@@ -11,7 +11,7 @@ spec:
     sites: "sno-cowboy"
     du-profile: "v4.10"
   mcp: "master"
-  # sourceFiles:
+  sourceFiles:
   #   - fileName: SriovNetwork.yaml
   #     policyName: "config-policy"
   #     metadata:

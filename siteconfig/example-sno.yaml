@@ -32,6 +32,8 @@ spec:
       - cidr: 192.168.86.0/24
     serviceNetwork:
       - 172.30.0.0/16
+    additionalNTPSources:
+      - clock.redhat.com
     #additionalNTPSources:
     #  - 1111:2222:3333:4444::2
     # Optionally; This can be used to override the KlusterletAddonConfig that is creted for this cluster:
@@ -45,9 +47,8 @@ spec:
           name: "sno-bmc-secret"
         bootMACAddress: "52:54:00:22:f0:07"
         bootMode: "UEFI"
-        # rootDeviceHints:
-        #   deviceName: "/dev/sda"
-
+        rootDeviceHints:
+          deviceName: "/dev/vda"
         #rootDeviceHints:
         #  hctl: '0:1:0'
         #cpuset: "0-1,52-53"

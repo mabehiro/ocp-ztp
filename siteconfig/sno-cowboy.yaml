@@ -61,6 +61,7 @@ spec:
                 macAddress: "52:54:00:f8:45:f4"
                 ipv4:
                   enabled: true
+                  dhcp: false
                   address:
                   - ip: 192.168.86.199
                     prefix-length: 24

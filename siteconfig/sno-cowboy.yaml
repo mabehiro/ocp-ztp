@@ -51,7 +51,7 @@ spec:
           deviceName: "/dev/vda"
         nodeNetwork:
           interfaces:
-            - name: "enps10"
+            - name: "ens1s0"
               macAddress: "52:54:00:f8:45:f4"
           config:
             interfaces:

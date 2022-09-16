@@ -51,14 +51,13 @@ spec:
           deviceName: "/dev/vda"
         nodeNetwork:
           interfaces:
-            - name: 
+            - name: "enps10"
               macAddress: "52:54:00:f8:45:f4"
           config:
             interfaces:
               - name: ens1s0
                 type: ethernet
                 state: up
-                macAddress: "52:54:00:f8:45:f4"
                 ipv4:
                   enabled: true
                   dhcp: false

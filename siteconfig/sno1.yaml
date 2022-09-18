@@ -42,17 +42,17 @@ spec:
     nodes:
       - hostName: "sno1.cotton.blue"
         role: "master"
-        bmcAddress: "redfish-virtualmedia+http://192.168.86.30:8000/redfish/v1/Systems/1b54b484-5dc0-4290-8576-9ed45811b41e"
+        bmcAddress: "redfish-virtualmedia+http://192.168.86.49:8000/redfish/v1/Systems/ee612935-869b-4593-b066-128b106c48b4"
         bmcCredentialsName:
           name: "sno-bmc-secret"
-        bootMACAddress: "52:54:00:78:fc:17"
+        bootMACAddress: "52:54:00:dd:cf:02"
         bootMode: "UEFI"
         rootDeviceHints:
           deviceName: "/dev/vda"
         nodeNetwork:
           interfaces:
             - name: "ens1s0"
-              macAddress: "52:54:00:78:fc:17"
+              macAddress: "52:54:00:dd:cf:02"
           config:
             interfaces:
               - name: ens1s0
@@ -62,14 +62,14 @@ spec:
                   enabled: true
                   dhcp: false
                   address:
-                  - ip: 192.168.86.199
+                  - ip: 192.168.86.132
                     prefix-length: 24
             dns-resolver:
                config:
                  search:
                  - cotton.blue
                  server:
-                 - 192.168.86.53
+                 - 192.168.86.67
             routes:
               config:
               - destination: 0.0.0.0/0

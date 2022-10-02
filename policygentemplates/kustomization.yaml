@@ -11,4 +11,4 @@ generators:
 #  - du-upgrade.yaml
 
 resources:
-#  - ns.yaml
+  - ns.yaml

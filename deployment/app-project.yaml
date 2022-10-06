@@ -37,5 +37,9 @@ spec:
     kind: SiteConfig
   - group: 'batch'
     kind: Job
+  - group: ''
+    kind: Role
+  - group: ''
+    kind: RoleBinding  
   sourceRepos:
   - '*'

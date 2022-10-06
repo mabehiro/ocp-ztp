@@ -35,7 +35,7 @@ spec:
     kind: ManagedCluster
   - group: 'ran.openshift.io'
     kind: SiteConfig
-  - group: ''
+  - group: 'batch'
     kind: Job
   sourceRepos:
   - '*'

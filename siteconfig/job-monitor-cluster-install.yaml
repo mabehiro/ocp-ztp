@@ -5,6 +5,8 @@ metadata:
     app.kubernetes.io/instance: clusters
   name: job-monitor-cluster-install
   namespace: sno1
+  annotations:
+    argocd.argoproj.io/sync-options: Validate=false
 spec:
   template:
     spec:

@@ -7,4 +7,4 @@ generators:
 resources:
 #  - rbac.yaml
 #  - role-binding.yaml
-#  - job-monitor-cluster-install.yaml
+#  - pod-monitor-cluster-install.yaml

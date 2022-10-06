@@ -37,9 +37,9 @@ spec:
     kind: SiteConfig
   - group: 'batch'
     kind: Job
-  - group: ''
+  - group: 'rbac.authorization.k8s.io'
     kind: Role
-  - group: ''
+  - group: 'rbac.authorization.k8s.io'
     kind: RoleBinding  
   sourceRepos:
   - '*'

@@ -1,7 +1,8 @@
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: Role
 metadata:
   name: ztprole
+  namespace: sno1
 rules:
 - apiGroups:
   - agent-install.openshift.io
@@ -41,6 +42,3 @@ rules:
   - "*"
   verbs:
   - "*"
-
-
-# oc adm policy add-cluster-role-to-user ztprole system:serviceaccount:sno1:default -n sno1

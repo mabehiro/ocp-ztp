@@ -40,6 +40,8 @@ spec:
   - group: 'rbac.authorization.k8s.io'
     kind: Role
   - group: 'rbac.authorization.k8s.io'
-    kind: RoleBinding  
+    kind: RoleBinding
+  - group: ''
+    kind: Pod    
   sourceRepos:
   - '*'

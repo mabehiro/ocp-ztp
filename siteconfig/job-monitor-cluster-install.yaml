@@ -1,12 +1,10 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
+  labels:
+    app.kubernetes.io/instance: clusters
   name: job-monitor-cluster-install
   namespace: sno1
-  annotations:
-    # argocd.argoproj.io/hook: Sync
-    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
-    # argocd.argoproj.io/sync-wave: "7"
 spec:
   template:
     spec:

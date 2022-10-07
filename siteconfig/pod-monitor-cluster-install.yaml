@@ -83,7 +83,7 @@ spec:
         # reset counter
         ct=0
         # Give 1 hour for install time, timeout if cluster installation is not completed in 1 hour
-        while [[ $ct -le 20 ]]; do
+        while [[ $ct -le 40 ]]; do
           # mabe
           logc "in LOOP1"
           logc $AGENT_NAME

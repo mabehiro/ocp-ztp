@@ -61,6 +61,9 @@ spec:
         ct=0
         # Give 1 hour for install time, timeout if cluster installation is not completed in 1 hour
         while [[ $ct -le 20 ]]; do
+          # mabe
+          logc "in LOOP1"
+          logc $AGENT_NAME
           
           # get install state
           INSTALL_STATUS=`oc get agentclusterinstall $AGENT_NAME -o jsonpath='{.status.debugInfo.state}'`

@@ -47,6 +47,12 @@ spec:
                         oc get bmh
                         BM_CHECK=1
                         ;;
+                detached)
+                        logc "No errors detected"
+                        oc get bmh
+                        BM_CHECK=1
+                        ;;
+
                 *)
                         logc "Current BMH status:"
                         oc get bmh

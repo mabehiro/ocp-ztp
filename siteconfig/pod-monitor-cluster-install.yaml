@@ -36,15 +36,32 @@ spec:
         while [[ $ct -le 10 ]]; do
           res=`oc get bmh | sed 1d | awk '{print $1}' |  xargs oc get bmh -o jsonpath='{.status.operationalStatus}' 2>/dev/null | grep error`
           echo -e "RES: $res"
-          if [ "$res" == "error" ]; then
-            logc "Error detected on BMH:"
-            oc get bmh | sed 1d | awk '{print $1}' | xargs oc get bmh -o jsonpath='{.status.errorMessage}'
-            echo
-          else
-            logc "No errors detected"
-            oc get bmh
-            BM_CHECK=1
-          fi
+          case $res in
+                error)
+                        logc "Error detected on BMH:"
+                        oc get bmh | sed 1d | awk '{print $1}' | xargs oc get bmh -o jsonpath='{.status.errorMessage}'
+                        echo
+                        ;;
+                OK)
+                        logc "No errors detected"
+                        oc get bmh
+                        BM_CHECK=1
+                        ;;
+                *)
+                        logc "Current BMH status:"
+                        oc get bmh
+                        ;;
+          esac
+
+          # if [ "$res" == "error" ]; then
+          #   logc "Error detected on BMH:"
+          #   oc get bmh | sed 1d | awk '{print $1}' | xargs oc get bmh -o jsonpath='{.status.errorMessage}'
+          #   echo
+          # else
+          #   logc "No errors detected"
+          #   oc get bmh
+          #   BM_CHECK=1
+          # fi
 
           if [[ $BM_CHECK -eq 1 ]]; then
             break;

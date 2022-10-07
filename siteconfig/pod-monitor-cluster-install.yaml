@@ -17,7 +17,7 @@ spec:
         #
         function logc() {
             txt=$1
-            echo -e "[`date '+%m-%-d-%Y %H:%M:%S'`] $txt" 
+            echo -e "[`date '+%m-%d-%Y %H:%M:%S'`] $txt" 
         }
         ct=0
         INSTALL_STATUS=0
@@ -34,7 +34,7 @@ spec:
         logc "Check BareMetalNodes readiness"
         # Wait for BaremetalNodes to be ready and registered
         while [[ $ct -le 10 ]]; do
-          res=`oc get bmh | sed 1d | awk '{print $1}' |  xargs oc get bmh -o jsonpath='{.status.operationalStatus}' 2>/dev/null | grep error`
+          res=`oc get bmh | sed 1d | awk '{print $1}' |  xargs oc get bmh -o jsonpath='{.status.operationalStatus}' 2>/dev/null`
           echo -e "RES: $res"
           case $res in
                 error)

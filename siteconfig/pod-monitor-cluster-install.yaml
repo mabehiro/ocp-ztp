@@ -23,7 +23,8 @@ spec:
         INSTALL_STATUS=0
 
         # get agent name
-        AGENT_NAME=`oc get agentclusterinstall -o template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}'`
+        #AGENT_NAME=`oc get agentclusterinstall -o jsonpath='{.metadata.name}'`
+        AGENT_NAME=`oc get agentclusterinstall | tail -1 | awk '{print $1}'`
 
         START_DATE=`date +%s`
         logc "START Cluster monitor install"
@@ -33,11 +34,11 @@ spec:
         logc "Check BareMetalNodes readiness"
         # Wait for BaremetalNodes to be ready and registered
         while [[ $ct -le 10 ]]; do
-          res=`oc get bmh -o template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' | xargs oc get bmh -o jsonpath='{.status.operationalStatus}' 2>/dev/null | grep error`
+          res=`oc get bmh | sed 1d | awk '{print $1}' |  xargs oc get bmh -o jsonpath='{.status.operationalStatus}' 2>/dev/null | grep error`
           echo -e "RES: $res"
           if [ "$res" == "error" ]; then
             logc "Error detected on BMH:"
-            oc get bmh -o template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' | xargs oc get bmh -o jsonpath='{.status.errorMessage}'
+            oc get bmh | sed 1d | awk '{print $1}' | xargs oc get bmh -o jsonpath='{.status.errorMessage}'
             echo
           else
             logc "No errors detected"

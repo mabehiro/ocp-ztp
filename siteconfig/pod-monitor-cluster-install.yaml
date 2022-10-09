@@ -3,6 +3,8 @@ kind: Pod
 metadata:
   name: job-monitor-cluster-install
   namespace: sno1
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
 #  serviceAccountName: ztprole-sa
   containers:

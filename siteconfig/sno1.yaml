@@ -5,6 +5,8 @@ kind: SiteConfig
 metadata:
   name: "sno1"
   namespace: "sno1"
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   baseDomain: "cotton.blue"
   pullSecretRef:

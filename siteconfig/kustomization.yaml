@@ -5,4 +5,5 @@ generators:
   - sno1.yaml
 
 resources:
+  - role-binding.yaml
   - pod-monitor-cluster-install.yaml

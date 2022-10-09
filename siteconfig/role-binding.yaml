@@ -4,7 +4,8 @@ metadata:
   name: ztprole
 subjects:
   - kind: ServiceAccount
-    name: ztprole-sa
+    name: default
+    namespace: sno1
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

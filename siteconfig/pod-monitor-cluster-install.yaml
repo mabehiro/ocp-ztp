@@ -140,7 +140,7 @@ spec:
                    ;;
 
                 ## mabe
-                adding-host)
+                adding-hosts)
                    logc "Adding-host state"
                    INSTALL_STATUS=1
                    break;

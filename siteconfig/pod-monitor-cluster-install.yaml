@@ -139,6 +139,13 @@ spec:
                    break;
                    ;;
 
+                ## mabe
+                adding-host)
+                   logc "Adding-host state"
+                   INSTALL_STATUS=1
+                   break;
+                   ;;
+
                 *)
                    logc "Status unknown"
                    logc "Output: `oc get agentclusterinstall $AGENT_NAME -o jsonpath='{.status.debugInfo.stateInfo}'`"

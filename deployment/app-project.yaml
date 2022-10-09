@@ -35,13 +35,19 @@ spec:
     kind: ManagedCluster
   - group: 'ran.openshift.io'
     kind: SiteConfig
-  # - group: 'batch'
-  #   kind: Job
-  # - group: 'rbac.authorization.k8s.io'
-  #   kind: Role
-  # - group: 'rbac.authorization.k8s.io'
-  #   kind: RoleBinding
+  - group: 'batch'
+    kind: Job
+  - group: 'rbac.authorization.k8s.io'
+    kind: Role
+  - group: 'rbac.authorization.k8s.io'
+    kind: RoleBinding
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRole
+  - group: 'rbac.authorization.k8s.io'
+    kind: ClusterRoleBinding
   - group: ''
-    kind: Pod    
+    kind: Pod
+  - group: ''
+    kind: ServiceAccount        
   sourceRepos:
   - '*'

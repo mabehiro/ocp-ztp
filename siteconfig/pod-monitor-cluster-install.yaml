@@ -99,7 +99,7 @@ spec:
             # reset counter
             ct=0
             # Give 1 hour for install time, timeout if cluster installation is not completed in 1 hour
-            while [[ $ct -le 40 ]]; do
+            while [[ $ct -le 80 ]]; do
               
               # get install state
               INSTALL_STATUS=`oc get agentclusterinstall $AGENT_NAME -o jsonpath='{.status.debugInfo.state}'`

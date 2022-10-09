@@ -8,3 +8,5 @@ resources:
   - gitops-cluster-rolebinding.yaml
   - clusters-app.yaml
   - policies-app.yaml
+  - rbac.yaml
+  - role-binding.yaml

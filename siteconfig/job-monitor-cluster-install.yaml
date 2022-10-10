@@ -10,6 +10,7 @@ spec:
   template:
     spec:
       containers:
+      restartPolicy: Never
       - name: monitor-cluster-install
         image: registry.redhat.io/openshift4/ose-cli
         command:

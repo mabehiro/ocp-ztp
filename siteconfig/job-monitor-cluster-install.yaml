@@ -246,7 +246,7 @@ spec:
                 fi
     
                 EOF
-            name: monitor-cluster-install
-            image: registry.redhat.io/openshift4/ose-cli
-          restartPolicy: Never
+        name: monitor-cluster-install
+        image: registry.redhat.io/openshift4/ose-cli
+      restartPolicy: Never
   

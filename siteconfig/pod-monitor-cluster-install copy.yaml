@@ -1,5 +1,5 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: v1
+kind: Pod
 metadata:
   name: job-monitor-cluster-install
   namespace: sno1
@@ -225,7 +225,7 @@ spec:
 
 
               POLICY_TOTAL_TIME=`echo $(( $POLICY_END_TIME - $POLICY_START_TIME )) | awk '{printf "%d:%02d:%02d", $1/3600, ($1/60)%60, $1%60}'`
-              
+                            
               logc "Policy deployment total time: $POLICY_TOTAL_TIME\n"
 
               TOTAL_TIME=`echo $(( $POLICY_END_TIME - $CLUSTER_START_TIME )) | awk '{printf "%d:%02d:%02d", $1/3600, ($1/60)%60, $1%60}'`

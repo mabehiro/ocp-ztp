@@ -12,3 +12,4 @@ generators:
 
 resources:
   - ns.yaml
+  - oadp-policy.yaml

@@ -3,5 +3,5 @@ kind: Kustomization
 
 resources:
 - DeploymentNS.yaml
-- miniwebdep.yaml
+
 

@@ -11,5 +11,6 @@ generators:
 #  - du-upgrade.yaml
 
 resources:
+  - source-crs
   - ns.yaml
-  - oadp-policy.yaml
+#  - oadp-policy.yaml

@@ -9,7 +9,7 @@ generators:
   - sno1.yaml
 ## adding for upgrade
 #  - du-upgrade.yaml
-  - miniwebdep.yaml
+#  - miniwebdep.yaml
 
 resources:
 #  - source-crs

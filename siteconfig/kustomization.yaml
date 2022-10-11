@@ -5,5 +5,5 @@ generators:
 #  - sno1.yaml
 
 resources:
-  - role-binding.yaml
-  - job-monitor-cluster-install.yaml
+#  - role-binding.yaml
+#  - job-monitor-cluster-install.yaml

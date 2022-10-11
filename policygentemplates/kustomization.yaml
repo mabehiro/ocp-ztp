@@ -12,6 +12,6 @@ generators:
   - miniwebdep.yaml
 
 resources:
-  - source-crs
+#  - source-crs
   - ns.yaml
 #  - oadp-policy.yaml

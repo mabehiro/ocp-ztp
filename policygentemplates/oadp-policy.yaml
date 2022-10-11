@@ -108,5 +108,13 @@ spec:
     - status: 'True'
       type: ManagedClusterConditionAvailable
   clusterSelector:
-    matchExpressions: []
+    matchExpressions:
+    - key: common
+      operator: In
+      values:
+      - "true"
+    - key: du-profile
+      operator: In
+      values:
+      - v4.10
     

@@ -20,7 +20,7 @@ spec:
     - fileName: oadp/secret.yaml
       remediationAction: enforce
       policyName: "oadp-policy"
-    - fileName: oadp/dataprotection.yaml
+    - fileName: oadp/dataprotectionapp.yaml
       remediationAction: enforce
       policyName: "oadp-policy"
 #  complianceType: musthave

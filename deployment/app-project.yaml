@@ -48,6 +48,8 @@ spec:
   - group: ''
     kind: Pod
   - group: ''
-    kind: ServiceAccount        
+    kind: ServiceAccount
+  - group: 'bitnami.com'
+    kind: SealedSecret        
   sourceRepos:
   - '*'

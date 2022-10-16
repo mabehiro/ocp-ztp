@@ -81,6 +81,6 @@ spec:
         diskPartition:
             device: /dev/vdb
               partitions:
-              - mount_point: /var/recovery
-                  size: 51200
-                  start: 800000        
+              # - mount_point: /var/recovery
+              #     size: 51200
+              #     start: 800000        

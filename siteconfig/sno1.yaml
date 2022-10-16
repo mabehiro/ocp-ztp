@@ -79,7 +79,7 @@ spec:
                 next-hop-address: 192.168.86.1
                 table-id: 254
         diskPartition:
-            device: /dev/vdb
-              - mount_point: /var/recovery
-                  size: 51200
-                  start: 800000        
+          device: /dev/vdb
+              # - mount_point: /var/recovery
+              #     size: 51200
+              #     start: 800000        

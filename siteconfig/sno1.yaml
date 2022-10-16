@@ -44,17 +44,17 @@ spec:
     nodes:
       - hostName: "sno1.cotton.blue"
         role: "master"
-        bmcAddress: "redfish-virtualmedia+http://192.168.86.49:8000/redfish/v1/Systems/f34276fd-7cf4-4687-bb46-d4cc237b45b4"
+        bmcAddress: "redfish-virtualmedia+http://192.168.86.49:8000/redfish/v1/Systems/3adab1b6-10d2-45b2-b70d-b93fa287737d"
         bmcCredentialsName:
           name: "sno-bmc-secret"
-        bootMACAddress: "52:54:00:73:ad:f4"
+        bootMACAddress: "52:54:00:4d:87:2d"
         bootMode: "UEFI"
         rootDeviceHints:
           deviceName: "/dev/vda"
         nodeNetwork:
           interfaces:
             - name: "ens1s0"
-              macAddress: "52:54:00:73:ad:f4"
+              macAddress: "52:54:00:4d:87:2d"
           config:
             interfaces:
               - name: ens1s0
@@ -78,9 +78,9 @@ spec:
                 next-hop-interface: ens1s0
                 next-hop-address: 192.168.86.1
                 table-id: 254
-        diskPartition:
-        - device: /dev/vdb
-          pratitions:
-          - mount_point: /var/recovery
-            size: 51200
-            start: 800000        
+        # diskPartition:
+        # - device: /dev/vdb
+        #   pratitions:
+        #   - mount_point: /var/recovery
+        #     size: 51200
+        #     start: 800000        

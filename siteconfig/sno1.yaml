@@ -78,7 +78,6 @@ spec:
                 next-hop-interface: ens1s0
                 next-hop-address: 192.168.86.1
                 table-id: 254
-        #Disk /dev/vdb: 100G
         diskPartition:
             - device: /dev/vdb
             partitions:

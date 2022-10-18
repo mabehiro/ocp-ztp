@@ -1,6 +1,8 @@
 apiVersion: action.open-cluster-management.io/v1beta1
 kind: ManagedClusterAction
 metadata:
+  annotations: 
+    argocd.argoproj.io/sync-options: Replace=true
   name: backup-sno1
   namespace: sno1
 spec:

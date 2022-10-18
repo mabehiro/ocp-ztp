@@ -51,9 +51,9 @@ spec:
     kind: ServiceAccount
   - group: 'bitnami.com'
     kind: SealedSecret
-  - group: ''
+  - group: 'action.open-cluster-management.io'
     kind: ManagedClusterAction
-  - group: ''
+  - group: 'view.open-cluster-management.io'
     kind: ManagedClusterView            
   sourceRepos:
   - '*'

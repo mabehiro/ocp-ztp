@@ -50,6 +50,10 @@ spec:
   - group: ''
     kind: ServiceAccount
   - group: 'bitnami.com'
-    kind: SealedSecret        
+    kind: SealedSecret
+  - group: ''
+    kind: ManagedClusterAction
+  - group: ''
+    kind: ManagedClusterView            
   sourceRepos:
   - '*'

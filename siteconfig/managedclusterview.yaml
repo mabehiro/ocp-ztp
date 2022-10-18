@@ -1,0 +1,12 @@
+apiVersion: view.open-cluster-management.io/v1beta1
+kind: ManagedClusterView
+metadata:
+  name: backup-cluster3-view
+  namespace: sno1
+spec:
+  scope:
+    apiGroup: velero.io
+    kind: Backup
+    name: backup
+    namespace: openshift-adp
+    resource: backups.velero.io

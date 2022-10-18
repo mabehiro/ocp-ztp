@@ -1,7 +1,7 @@
 apiVersion: view.open-cluster-management.io/v1beta1
 kind: ManagedClusterView
 metadata:
-  name: backup-cluster3-view
+  name: backup-sno1-view
   namespace: sno1
 spec:
   scope:

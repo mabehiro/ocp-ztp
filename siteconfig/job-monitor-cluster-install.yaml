@@ -235,13 +235,25 @@ spec:
     
                   echo "{\"cluster\": \"$NS\", \"total_deployment_time\": \"$TOTAL_TIME\", \"cluster_install_time\": \"$CLUSTER_TOTAL_TIME\", \"policy_deployment_time\": \"$POLICY_TOTAL_TIME\"}"
     
-                  logc "Total cluster installation and policy deployment time: $TOTAL_TIME"
-    
+                  logc "Notify Fuse cluster $NS deployment is completed"
+                  RESP_START_TIME=`date -d @$CLUSTER_START_TIME '+%m-%d-%Y %H:%M:%S'`
+                  RESP_END_TIME=`date -d @$POLICY_STOP_TIME '+%m-%d-%Y %H:%M:%S'`
+                  curl -v -X POST -H 'Content-Type: application/json' -d "{\"type\": \"CREATE_CLUSTER_REPLY\", \"cluster\": \"$NS\", \"start_time\": \"$RESP_START_TIME\", \"end_time\": \"$RESP_END_TIME\", \"duration\": \"$TOTAL_TIME\", \"state\": \"SUCCESS\", \"reason\": \"\"}" http://ztpintegration-amqatt.apps.ztphub.alflab.att.com/ztp
+
+   
                   exit 0
                 else
                   logc "Send notification cluster installation failed"
                   # here we can get the detailed logs to troubleshoot why the cluster install failed
                   collect_logs $AGENT_NAME
+
+                  NS=`oc get sa -o=jsonpath='{.items[0]..metadata.namespace}'`
+                  logc "Notify Fuse cluster $NS installation failed"
+
+                  RESP_START_TIME=`date -d @$CLUSTER_START_TIME '+%m-%d-%Y %H:%M:%S'`
+                  RESP_END_TIME=`date +'%m-%d-%Y %H:%M:%S'`
+                  curl -v -X POST -H 'Content-Type: application/json' -d "{\"type\": \"CREATE_CLUSTER_REPLY\", \"cluster\": \"$NS\", \"start_time\": \"$RESP_START_TIME\", \"end_time\": \"$RESP_END_TIME\", \"state\": \"FAILED\", \"reason\": \"\"}" http://ztpintegration-amqatt.apps.ztphub.alflab.att.com/ztp
+
                   exit 1
                 fi
     

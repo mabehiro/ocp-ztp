@@ -38,7 +38,7 @@ spec:
                        kind: ClusterVersion
                        name: version
                        resource: clusterversions.config.openshift.io
-                   _MANIFEST_
+_MANIFEST_
                 }
  
                 logc "START Cluster upgrade monitor"

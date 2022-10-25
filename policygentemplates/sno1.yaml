@@ -11,18 +11,18 @@ spec:
     du-profile: "v4.10"
   mcp: "master"
   sourceFiles:
-    - fileName: oadp/namespace.yaml
-      remediationAction: enforce
-      policyName: "oadp-policy"
-    - fileName: oadp/subscription.yaml
-      remediationAction: enforce
-      policyName: "oadp-policy"
-    - fileName: oadp/secret.yaml
-      remediationAction: enforce
-      policyName: "oadp-policy"
-    - fileName: oadp/dataprotectionapp.yaml
-      remediationAction: enforce
-      policyName: "oadp-policy"
+    # - fileName: oadp/namespace.yaml
+    #   remediationAction: enforce
+    #   policyName: "oadp-policy"
+    # - fileName: oadp/subscription.yaml
+    #   remediationAction: enforce
+    #   policyName: "oadp-policy"
+    # - fileName: oadp/secret.yaml
+    #   remediationAction: enforce
+    #   policyName: "oadp-policy"
+    # - fileName: oadp/dataprotectionapp.yaml
+    #   remediationAction: enforce
+    #   policyName: "oadp-policy"
 #Adding lvm
     - fileName: lvm/namespace.yaml
       remediationAction: enforce

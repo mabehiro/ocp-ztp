@@ -26,21 +26,9 @@ spec:
                 function create_managed_view() {
                    cr=$1
                    logc "Create ManagedClusterView for $cr"
-                   cat <<_MANIFEST_ | oc apply -f -
-                   apiVersion: view.open-cluster-management.io/v1beta1
-                   kind: ManagedClusterView
-                   metadata:
-                     name: upgrade-view
-                     namespace: ${cr}
-                   spec:
-                     scope:
-                       apiGroup: config.openshift.io
-                       kind: ClusterVersion
-                       name: version
-                       resource: clusterversions.config.openshift.io
-_MANIFEST_
+                   echo -e "apiVersion: view.open-cluster-management.io/v1beta1\nkind: ManagedClusterView\nmetadata:\n   name: upgrade-view\n   namespace: ${cr}\nspec:\n   scope:\n      apiGroup: config.openshift.io\n      kind: ClusterVersion\n      name: version\n      resource: clusterversions.config.openshift.io" | oc apply -f -
                 }
- 
+
                 logc "START Cluster upgrade monitor"
                 logc "============================="
                 CLUSTER_UPGRADE_START_TIME=`date +%s`

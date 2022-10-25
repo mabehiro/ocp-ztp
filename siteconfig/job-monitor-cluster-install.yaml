@@ -35,6 +35,7 @@ spec:
                   curl -k -X GET "$CLUSTER_EVENTS"
     
                   logc "Get cluster install logs"
+                  cd /tmp
                   curl -k -o logs.tar -X GET "$CLUSTER_LOGS"
                   tar -xf logs.tar
                   tar -zxvf controller_logs.tar.gz
@@ -203,7 +204,7 @@ spec:
                        logc "Applying policies.. status: ztp-running"
                     elif (echo $POLICY_STATUS | grep ztp-done > /dev/null ); then
                        logc "Policies deployment done! status: ztp-done"
-                       POLICY_STOP_TIME=`date +"%s"`
+                      POLICY_END_TIME=`date +"%s"`
                        break;
                     fi
     
@@ -221,7 +222,7 @@ spec:
                   logc "Cluster install stop time: `date -d @$CLUSTER_END_TIME '+%m-%d-%Y %H:%M:%S'`"
                   logc "Cluster install total time: $CLUSTER_TOTAL_TIME\n"
                   logc "Policies deployment start time: `date -d @$POLICY_START_TIME '+%m-%d-%Y %H:%M:%S'`"
-                  logc "Policies deployment stop time: `date -d @$POLICY_STOP_TIME '+%m-%d-%Y %H:%M:%S'`"
+                  logc "Policies deployment stop time: `date -d @$POLICY_END_TIME '+%m-%d-%Y %H:%M:%S'`"
     
     
                   POLICY_TOTAL_TIME=`echo $(( $POLICY_END_TIME - $POLICY_START_TIME )) | awk '{printf "%d:%02d:%02d", $1/3600, ($1/60)%60, $1%60}'`
@@ -236,8 +237,8 @@ spec:
                   echo "{\"cluster\": \"$NS\", \"total_deployment_time\": \"$TOTAL_TIME\", \"cluster_install_time\": \"$CLUSTER_TOTAL_TIME\", \"policy_deployment_time\": \"$POLICY_TOTAL_TIME\"}"
     
                   logc "Notify Fuse cluster $NS deployment is completed"
-                  RESP_START_TIME=`date -d @$CLUSTER_START_TIME '+%m-%d-%Y %H:%M:%S'`
-                  RESP_END_TIME=`date -d @$POLICY_STOP_TIME '+%m-%d-%Y %H:%M:%S'`
+                  RESP_START_TIME=`date -d @${CLUSTER_START_TIME} '+%m-%d-%Y %H:%M:%S'`
+                  RESP_END_TIME=`date -d @${POLICY_END_TIME} '+%m-%d-%Y %H:%M:%S'`
                   curl -v -X POST -H 'Content-Type: application/json' -d "{\"type\": \"CREATE_CLUSTER_REPLY\", \"cluster\": \"$NS\", \"start_time\": \"$RESP_START_TIME\", \"end_time\": \"$RESP_END_TIME\", \"duration\": \"$TOTAL_TIME\", \"state\": \"SUCCESS\", \"reason\": \"\"}" http://ztpintegration-amqatt.apps.ztphub.alflab.att.com/ztp
 
    
@@ -250,7 +251,7 @@ spec:
                   NS=`oc get sa -o=jsonpath='{.items[0]..metadata.namespace}'`
                   logc "Notify Fuse cluster $NS installation failed"
 
-                  RESP_START_TIME=`date -d @$CLUSTER_START_TIME '+%m-%d-%Y %H:%M:%S'`
+                  RESP_START_TIME=`date -d @${CLUSTER_START_TIME} '+%m-%d-%Y %H:%M:%S'`
                   RESP_END_TIME=`date +'%m-%d-%Y %H:%M:%S'`
                   curl -v -X POST -H 'Content-Type: application/json' -d "{\"type\": \"CREATE_CLUSTER_REPLY\", \"cluster\": \"$NS\", \"start_time\": \"$RESP_START_TIME\", \"end_time\": \"$RESP_END_TIME\", \"state\": \"FAILED\", \"reason\": \"\"}" http://ztpintegration-amqatt.apps.ztphub.alflab.att.com/ztp
 

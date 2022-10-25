@@ -8,7 +8,7 @@ resources:
   - pull_secret.yaml
   - bmc_secret.yaml
   - role-binding.yaml
-  - job-monitor-cluster-install.yaml
-  - job-monitor-cluster-upgrade.yaml
+#  - job-monitor-cluster-install.yaml
+#  - job-monitor-cluster-upgrade.yaml
 #  - managedclusterview.yaml
 #  - managedclusteraction.yaml

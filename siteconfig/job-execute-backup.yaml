@@ -1,0 +1,76 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-execute-backup
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  template:
+    spec:
+      containers:
+      - command:
+          - /bin/bash
+          - "-c"
+          - |
+                /bin/bash <<'EOF'
+                # Script to trigger spoke cluster backup used for OCP downgrade flow
+                # Author: Federico 'tele' Rossi <ferossi@redhat.com>
+                
+                function logc() {
+                    txt=$1
+                    echo -e "[`date '+%m-%d-%Y %H:%M:%S'`] $txt" 
+                }
+ 
+               
+                function create_managed_view() {
+                   cr=$1
+                   echo -e "apiVersion: view.open-cluster-management.io/v1beta1\nkind: ManagedClusterView\nmetadata:\n   name: backup-${cr}-view\n   namespace: ${cr}\nspec:\n   scope:\n      apiGroup: velero.io\n      kind: Backup\n      name: backup-${cr}\n      namespace: openshift-adp\n      resource: backups.velero.io" | oc apply -f -
+                }
+
+                function create_managed_action() {
+                   cr=$1
+                   echo -e "apiVersion: action.open-cluster-management.io/v1beta1\nkind: ManagedClusterAction\nmetadata:\n   name: ${cr}-backup-workload\n   namespace: ${cr}\nspec:\n  actionType: Create\n  kube:\n    resources: backups.velero.io\n    name: backup-${cr}\n    template:\n        apiVersion: velero.io/v1\n        kind: Backup\n        metadata:\n          labels:\n             velero.io/storage-location: exmaple-dpa-1\n          name: backup-${cr}\n          namespace: openshift-adp\n        spec:\n          defaultVolumestoRestic: false\n          hooks: {}\n          includedNamespaces:\n          - workload\n          metadata: {}\n          storageLocation: example-dpa-1" | oc apply -f -
+                }
+
+ 
+                logc "START Backup"
+                logc "============================="
+                CLUSTER_BACKUP_START_TIME=`date +%s`
+   
+                NS=`oc get sa -o=jsonpath='{.items[0]..metadata.namespace}'`
+        
+                logc "Create ManagedClusterAction Backup for $NS"
+                create_managed_action $NS
+                logc "Create ManagedClusterView for Backup"
+                create_managed_view $NS
+                       
+                logc "Monitor backup status"
+
+                ct=0
+                while [[ $ct -le 20 ]]; do
+                   BKP_STATUS=`oc get managedclusterview backup-${NS}-view -n ${NS} -o jsonpath='{.status.result.status.phase}'`
+
+                   if [[ "$BKP_STATUS" == "Failed" ]]; then
+                      logc "Backup failed:"
+                      oc get managedclusterview backup-${NS}-view -n ${NS} -o jsonpath='{.status.result.status}'
+                      echo
+                      break
+                   elif [[ "$BKP_STATUS" == "Completed" ]]; then
+                      logc "Backup successfully completed: "
+                      oc get managedclusterview backup-${NS}-view -n ${NS} -o jsonpath='{.status.result.status}'
+                      echo
+                      break
+                   else
+                      logc "Backup status unknown: "
+                      oc get managedclusterview backup-${NS}-view -n ${NS} -o jsonpath='{.status.result.status}'   
+                      echo
+                   fi
+ 
+                   sleep 10
+                   ct=$(($ct+1))
+                done
+                
+                EOF
+        name: execute-backup
+        image: registry.redhat.io/openshift4/ose-cli
+      restartPolicy: Never

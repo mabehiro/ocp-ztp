@@ -26,4 +26,4 @@ spec:
             profile: default
             region: "localstorage"
             s3ForcePathStyle: "true"
-            s3Url: "s3-openshift-storage.apps.hub.michigan.blue" #update this if necessary
+            s3Url: "http://s3-openshift-storage.apps.hub.michigan.blue/" #update this if necessary

@@ -20,10 +20,10 @@ spec:
             name: cloud-credentials
             key: cloud
         objectStorage:
-            bucket: "oadp-bucket-4ec56434-d22d-4534-abf3-f10d46fafabd" #update this
+            bucket: "oadp-bucket-15e7eb56-bdaf-423e-b42e-cbff4b4176ff" #update this
             prefix: velero
         config:
             profile: default
             region: "localstorage"
             s3ForcePathStyle: "true"
-            s3Url: "http://s3-openshift-storage.apps.hub.michigan.blue/" #update this if necessary
+            s3Url: "http://s3-openshift-storage.apps.hub.cotton.blue/" #update this if necessary

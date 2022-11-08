@@ -23,12 +23,12 @@ spec:
          
                 function create_managed_view() {
                    cr=$1
-                   echo -e "apiVersion: view.open-cluster-management.io/v1beta1\nkind: ManagedClusterView\nmetadata:\n   name: backup-${cr}-view1\n   namespace: ${cr}\nspec:\n   scope:\n      apiGroup: velero.io\n      kind: Backup\n      name: backup-${cr}-1\n      namespace: openshift-adp\n      resource: backups.velero.io" | oc apply -f -
+                   echo -e "apiVersion: view.open-cluster-management.io/v1beta1\nkind: ManagedClusterView\nmetadata:\n   name: backup-${cr}-view\n   namespace: ${cr}\nspec:\n   scope:\n      apiGroup: velero.io\n      kind: Backup\n      name: backup-${NEWNAME}-1\n      namespace: openshift-adp\n      resource: backups.velero.io" | oc apply -f -
                 }
 
                 function create_managed_action() {
                    cr=$1
-                   echo -e "apiVersion: action.open-cluster-management.io/v1beta1\nkind: ManagedClusterAction\nmetadata:\n   name: ${cr}-backup-workload-1\n   namespace: ${cr}\nspec:\n  actionType: Create\n  kube:\n    resources: backups.velero.io\n    name: backup-${cr}-1\n    template:\n        apiVersion: velero.io/v1\n        kind: Backup\n        metadata:\n          labels:\n             velero.io/storage-location: example-dpa-1\n          name: backup-${cr}-1\n          namespace: openshift-adp\n        spec:\n          defaultVolumestoRestic: false\n          hooks: {}\n          includedNamespaces:\n          - workload\n          metadata: {}\n          storageLocation: example-dpa-1" | oc apply -f -
+                   echo -e "apiVersion: action.open-cluster-management.io/v1beta1\nkind: ManagedClusterAction\nmetadata:\n   name: ${cr}-backup-workload-1\n   namespace: ${cr}\nspec:\n  actionType: Create\n  kube:\n    resources: backups.velero.io\n    name: backup-${NEWNAME}-1\n    template:\n        apiVersion: velero.io/v1\n        kind: Backup\n        metadata:\n          labels:\n             velero.io/storage-location: example-dpa-1\n          name: backup-${NEWNAME}-1\n          namespace: openshift-adp\n        spec:\n          defaultVolumestoRestic: false\n          hooks: {}\n          includedNamespaces:\n          - workload\n          metadata: {}\n          storageLocation: example-dpa-1" | oc apply -f -
                 }
 
  
@@ -37,6 +37,8 @@ spec:
                 CLUSTER_BACKUP_START_TIME=`date +%s`
    
                 NS=`oc get sa -o=jsonpath='{.items[0]..metadata.namespace}'`
+                PRE=`date +%Y-%m-%d-%H-%M`
+                NEWNAME=$NS-$PRE
         
                 logc "Create ManagedClusterAction Backup for $NS"
                 create_managed_action $NS
@@ -70,12 +72,18 @@ spec:
                    sleep 10
                    ct=$(($ct+1))
                 done
-        
+                
+                # delete managedcluster
                 # delete clusterdeployment
                 # delete infraenv
                 # delete bmh
 
                 logc "Trigger cluster reprovisioning by deleting ClusterDeployment, InfraEnv and BMH"
+
+                logc "Current ManagedCluster: "
+                oc get managedcluster
+                logc "Delete ManagedCluster.."
+                oc delete managedcluster $NS
 
                 logc "Current ClusterDeployment: "
                 oc get clusterdeployment -n $NS

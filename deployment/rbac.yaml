@@ -19,6 +19,7 @@ rules:
   - get
   - list
   - watch
+  - delete
 # Allow our ZTP user to create namespace
 # This is needed in order to import the cluster
 - apiGroups:
@@ -27,6 +28,7 @@ rules:
   resources:
   - namespaces
   - secrets
+  - serviceaccount
   #- managedclusters
   # - managedclustervalidators
   #- managedclustersets/join

@@ -34,7 +34,7 @@ spec:
 
                 function create_managed_action_restore() {
                    cr=$1
-                   echo -e "apiVersion: action.open-cluster-management.io/v1beta1\nkind: ManagerClusterAction\nmetadata:\n   name: restore-${cr}-workload\n   namespace: ${cr}\nspec:\n   actionType: Create\n   kube:\n      resource: restores.velero.io\n      name: restore-${NEWNAME}\n      template:\n        apiVersion: velero.io/v1\n        kind: Restore\n        metadata:\n           name: restore-${NEWNAME}\n           namespace: openshift-adp\n        spec:\n           backupName: backup-${NEWNAME}\n           excludedResources:\n           - nodes\n           - events\n           - events.events.k8s.io\n           - backups.velero.io\n           - restores.velero.io\n           - resticrepositories.velero.io\n           includedNamespaces:\n           - workload" | oc apply -f -
+                   echo -e "apiVersion: action.open-cluster-management.io/v1beta1\nkind: ManagedClusterAction\nmetadata:\n   name: restore-${cr}-workload\n   namespace: ${cr}\nspec:\n   actionType: Create\n   kube:\n      resource: restores.velero.io\n      name: restore-${NEWNAME}\n      template:\n        apiVersion: velero.io/v1\n        kind: Restore\n        metadata:\n           name: restore-${NEWNAME}\n           namespace: openshift-adp\n        spec:\n           backupName: backup-${NEWNAME}\n           excludedResources:\n           - nodes\n           - events\n           - events.events.k8s.io\n           - backups.velero.io\n           - restores.velero.io\n           - resticrepositories.velero.io\n           includedNamespaces:\n           - workload" | oc apply -f -
                 }
  
                 function create_managed_view_restore() {

@@ -53,8 +53,7 @@ spec:
                 logc "Create ManagedClusterAction Backup for $NS"
                 create_managed_action_backup $NS
                 logc "Create ManagedClusterView for Backup"
-                create_managed_view_backup $NS
-                       
+                create_managed_view_backup $NS                
                 logc "Monitor backup status"
 
                 ct=0
@@ -322,15 +321,15 @@ spec:
                       echo
                       RES_CHECK=1
                       break
-                   elif [[ "$RES_STATUS" == "Completed" ]]; then
-                      logc "Backup successfully completed: "
+                   elif [[ "$REC_STATUS" == "Completed" ]]; then
+                      logc "Restore backup successfully completed: "
                       oc get managedclusterview restore-${NS}-view -n ${NS} -o jsonpath='{.status.result.status}'
                       echo
                       break
-                   elif [[ "$RES_STATUS" == "InProgress" ]]; then
-                      logc "Backup is in progress..."
+                   elif [[ "$REC_STATUS" == "InProgress" ]]; then
+                      logc "Restore backup is in progress..."
                    else
-                      logc "Backup status unknown: "
+                      logc "Restore backup status unknown: "
                       oc get managedclusterview restore-${NS}-view -n ${NS} -o jsonpath='{.status.result.status}'
                       echo
                    fi
@@ -358,9 +357,9 @@ spec:
 
                   CLUSTER_RESTORE_END_TIME=`date +%s`
                   
-                  CLUSTER_BACKUP_TOTAL_TIME=`echo $(( $CLUSTER_BACKUP_END_TIME - $CLUSTER_BACKUP_START_TIME )) | awk '{printf "%d:%02d:%02d", $1/3600, ($1/60)%60, $1%60}'`  `date -d @$CLUSTER_BACKUP_START_TIME '+%m-%d-%Y %H:%M:%S'`
-                  CLUSTER_RESTORE_TOTAL_TIME=`echo $(( $CLUSTER_RESTORE_END_TIME - $CLUSTER_RESTORE_START_TIME )) | awk '{printf "%d:%02d:%02d", $1/3600, ($1/60)%60, $1%60}'`  `date -d @$CLUSTER_RESTORE_START_TIME '+%m-%d-%Y %H:%M:%S'`
-                  CLUSTER_TOTAL_TIME=`echo $(( $CLUSTER_RESTORE_END_TIME - $CLUSTER_BACKUP_START_TIME )) | awk '{printf "%d:%02d:%02d", $1/3600, ($1/60)%60, $1%60}'`  `date -d @$CLUSTER_BACKUP_START_TIME '+%m-%d-%Y %H:%M:%S'`
+                  CLUSTER_BACKUP_TOTAL_TIME=`echo $(( $CLUSTER_BACKUP_END_TIME - $CLUSTER_BACKUP_START_TIME )) | awk '{printf "%d:%02d:%02d", $1/3600, ($1/60)%60, $1%60}' `
+                  CLUSTER_RESTORE_TOTAL_TIME=`echo $(( $CLUSTER_RESTORE_END_TIME - $CLUSTER_RESTORE_START_TIME )) | awk '{printf "%d:%02d:%02d", $1/3600, ($1/60)%60, $1%60}'`
+                  CLUSTER_TOTAL_TIME=`echo $(( $CLUSTER_RESTORE_END_TIME - $CLUSTER_BACKUP_START_TIME )) | awk '{printf "%d:%02d:%02d", $1/3600, ($1/60)%60, $1%60}'`
 
                   logc "Summary"
                   logc "======================"

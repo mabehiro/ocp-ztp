@@ -260,7 +260,7 @@ spec:
                 if [[ $INSTALL_STATUS -eq 1 ]]; then
                   logc "Cluster installation completed, get kubeconfig and kubeadmin password for the cluster"
                   logc "Kubeadmin password: "
-                  NS=`oc get sa -o=jsonpath='{.items[0]..metadata.namespace}'`
+                  NS=`oc get sa -o jsonpath='{.items[0]..metadata.namespace}'`
                   oc get secret $NS-admin-password -o jsonpath='{.data.password}' | base64 --decode
                   echo -e "\n"
                   logc "Kubeconfig: "

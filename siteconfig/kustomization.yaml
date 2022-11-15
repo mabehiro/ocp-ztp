@@ -11,6 +11,6 @@ resources:
   - job-monitor-cluster-install.yaml
 #  - job-downgrade-replacement-flow.yaml
 
-  - job-monitor-cluster-upgrade.yaml
+#  - job-monitor-cluster-upgrade.yaml
 #  - managedclusterview.yaml
 #  - managedclusteraction.yaml
